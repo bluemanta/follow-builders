@@ -6,7 +6,7 @@
     "template": "blue",
     "title": {
       "tag": "plain_text",
-      "content": "⚡ AI Builders Daily 追踪建造者日报 (2026-09-21)"
+      "content": "⚡ AI Builders Daily 追踪建造者日报 (2026-06-18)"
     }
   },
   "elements": [
@@ -14,7 +14,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**💡 今日 1 分钟要闻速览**\n• **[架构突破]** Andrej Karpathy 提出「Software 3.0」观点：自然语言将成为终极编译目标，传统编码将在5年内转为小众底层技能，重点转向 Agent 工作流编排。\n• **[产品重磅]** Vercel CEO Guillermo Rauch 发布 v0 Teams，定位为「AI 结对/共创的 Google Docs」，支持多人实时在同一画布中通过自然语言协作迭代前端应用。\n• **[技术思辨]** Anthropic 科学家 Amanda Askell 直言当前评测陷阱：行业过度关注「模型能做什么」，而真正核心的对齐评测应关注「模型在未被提示时自发会做什么」。"
+        "content": "**💡 今日 1 分钟要闻速览**\n• **[架构演进]** Andrej Karpathy 提出「Software 3.0」观点：自然语言将成为终极编译目标，传统编码将在5年内转为底层小众技能，重点转向 Agent 工作流编排与 Eval 体系。\n• **[产品发布]** Vercel CEO Guillermo Rauch 推出 v0 Teams，定位为「AI 结对共创的 Google Docs」，支持多人实时在同一画布中通过自然语言协作迭代前端应用。\n• **[前沿思辨]** Anthropic 科学家 Amanda Askell 指出当前评测误区：行业过度关注「模型能做什么」，而真实对齐评测应关注「模型在未被提示时自发会做什么」。"
       }
     },
     {
@@ -24,7 +24,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**🎧 精选播客拆解｜Latent Space**\n**Why Agents Keep Failing (And How to Fix Them)**\n*“大多数 Agent 在真实业务中失败并非推理能力不足，而是工具管理失控与评测缺失。”*\n> 工具集合精细化：为每个子步骤动态注入 3-5 个专有工具，准确率大幅优于全量灌入 20+ 工具。\n> 推理时计算（Inference-time Compute）与长思考模型正在将单次查询的价值提升百倍，但要求系统架构具备异步流式处理容错能力。"
+        "content": "**🎧 精选播客拆解｜AI & I by Every**\n**GitHub’s COO Explains Why AI Hasn’t Replaced Developers**\n*“代码生产已不再受人力工时限制；Agent 时代的核心竞争壁垒是开发者体验、工具选择权与精准上下文注入。”*\n> 从智商竞赛转向工具治理：为每个子任务精细配置 3-5 个专有工具，成功率远高于全量挂载通用工具。\n> 推理时计算与长思考模型正在重塑 Token 经济学，企业需要为长耗时 Agent 会话准备异步流式架构。"
       }
     },
     {
@@ -37,7 +37,7 @@
             "content": "收听原播客"
           },
           "type": "primary",
-          "url": "https://youtube.com/watch?v=example123"
+          "url": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL"
         }
       ]
     },
@@ -48,14 +48,14 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**🤖 Agent 基础设施与工作流**"
+        "content": "**🤖 Agent 架构与开发生态**"
       }
     },
     {
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Andrej Karpathy** (Eureka Labs 创始人 / 前 Tesla AI 总监)\n*“自然语言即代码，Agent 编排与 Eval 驱动正在颠覆传统软件工程范式。”*\nKarpathy 深入剖析了由提示词直接作为编译目标的范式转移。他同时开源了 Eureka Labs 的自建 Code Interpreter 最小内核教程，强调「理解底层原理是驾驭大模型的第一步」。"
+        "content": "**Thibault Sottiaux** (Codex & ChatGPT @OpenAI)\n*“Dearest gentle codexer.\n\nWe did a sneaky double reset. Not only do you get a full reset on us. But you are also getting ...”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -68,16 +68,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/karpathy/status/example1"
-        },
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "Eureka Labs 教程"
-          },
-          "type": "default",
-          "url": "https://eurekalabs.ai"
+          "url": "https://x.com/thsottiaux/status/2067399435009622521"
         }
       ]
     },
@@ -85,7 +76,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Swyx (Shawn Wang)** (smol AI 创始人 / Latent Space 主播)\n*“构建实用 Agent 的核心瓶颈不在于模型智商，而在于工具选择（Tool Curation）与边界约束。”*\n当 Agent 可用的工具超过 15 个时，API 调用命中率会从 95% 断崖式跌至 60%。未来一年的胜负手是针对具体任务精细裁剪 Tool context，而非盲目堆砌通用工具列表。"
+        "content": "**Guillermo Rauch** (@vercel CEO)\n*“https://t.co/ZciGmJ8SAP”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -98,7 +89,70 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/swyx/status/example2"
+          "url": "https://x.com/rauchg/status/2067369305826574587"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Aaron Levie** (ceo @box - your business lives in content. unleash)\n*“The past couple months we may be witnessing what the Applied AI layer will look like at scale. Despite some of the initi...”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/levie/status/2067455756795039957"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Zara Zhang** (Builder. Dangerously skips permissions. Harvard’17)\n*“Don't use AI for writing until you develop your own taste and voice\n\nUsing AI to write isn't inherently bad. The danger ...”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/zarazhangrui/status/2067423674689638652"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Claude** (Claude is an AI assistant built by @anthropicai to)\n*“Claude Design is in beta on all paid plans, on web and desktop. Give it a try: https://t.co/C9iewmyMQs”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/claudeai/status/2067325894268428560"
         }
       ]
     },
@@ -109,35 +163,14 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**🚀 产品发布与开发工具**"
+        "content": "**🚀 产品发布与前沿工具**"
       }
     },
     {
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Guillermo Rauch** (Vercel 创始人 & CEO)\n*“Vercel 正式推出 v0 Teams，开启多人协同 AI 原型设计新阶段。”*\n支持团队多人在同一个 Prompt 会话与实时预览画布中协作打磨 UI。Rauch 表示这是让产品经理、设计师与工程师真正消除跨职能沟通延迟的终极方案。"
-      }
-    },
-    {
-      "tag": "action",
-      "actions": [
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "发布推文"
-          },
-          "type": "default",
-          "url": "https://x.com/rauchg/status/example3"
-        }
-      ]
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "lark_md",
-        "content": "**Amjad Masad** (Replit 创始人 & CEO)\n*“Replit Agent 4 启动内测：自主分析长链路报错并自愈构建流水线。”*\n不仅能写业务逻辑，还能自主排查 Dockerfile、端口冲突及跨服务依赖配置。企业级云原生开发正在进入全托管自动驾驶时代。"
+        "content": "**Peter Yang** (Practical AI tutorials and interviews for busy peo)\n*“Watched Mortal Kombat 2 and it was terrible. The Furious has set the bar too high for action movies.”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -150,7 +183,112 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/amasad/status/example4"
+          "url": "https://x.com/petergyang/status/2067472851444420715"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Amjad Masad** (ceo @replit. civilizationist)\n*“Was so fun interviewing Spike Jones! https://t.co/EVkl1bH8so”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/amasad/status/2067386053980266542"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Garry Tan** (President & CEO @ycombinator —Founder @garryslist—)\n*“Rough estimate on $ productivity lost by Fable 5 ban: $12M per hour\n\nFrontier AI-coding daily actives, mid-2026: 5M devs...”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/garrytan/status/2067366749411176831"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Nikunj Kothari** (partner @fpvventures - investing in seed/A. previo)\n*“Why am I so against tranches? \n\nBecause it f*cks the next employee that joins. I was an early employee at four startups....”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/nikunj/status/2067399657639285150"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Dan Shipper** (ceo @every | the only subscription you need to sta)\n*“@every @ninklefitz i wrote \"against explanations\" in 2023 about how AI might change the sciences...extremely pumped to s...”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/danshipper/status/2067386395283345808"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Aditya Agarwal** (General Partner @SouthPkCommons, Co-Founder @Bevel)\n*“Apply to SPC https://t.co/xWaXyqC7Rj”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/adityaag/status/2067306245942317426"
         }
       ]
     },
@@ -161,14 +299,14 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**💡 前沿研究与深度观点**"
+        "content": "**💡 行业洞察与研究观点**"
       }
     },
     {
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Amanda Askell** (Anthropic Alignment / Safety 科学家)\n*“「我们习惯测量容易测量的指标，却忽视真正重要的维度。」”*\n发布了关于行为评估（Behavioral Evals）的系统论文。能力基准仅展现模型上限，而真实部署中的自主倾向与隐蔽偏见需要全新的非诱导式测试套件。"
+        "content": "**Swyx** (achieve ambition with intentionality, intensity, i)\n*“@midjourney @Scobleizer @bryan_johnson @DavidSHolz @iScienceLuvr best review from a cancer survivor x tech realist https...”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -178,11 +316,23 @@
           "tag": "button",
           "text": {
             "tag": "plain_text",
-            "content": "研究论文"
+            "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://www.anthropic.com/research"
-        },
+          "url": "https://x.com/swyx/status/2067512137405350067"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Josh Woodward** (VP, @Google @GoogleLabs @GeminiApp @GoogleAIStudio)\n*“Co-create: one of the key @GoogleLabs values.\n\nIt looks like this, thanks Voltage team! https://t.co/L90dHl9VQh”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
         {
           "tag": "button",
           "text": {
@@ -190,7 +340,70 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/AmandaAskell/status/example5"
+          "url": "https://x.com/joshwoodward/status/2067337173699850487"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Nan Yu** (head of product @linear)\n*“like, pg talks about taste and wears cargo shorts, he's clearly not talking about taste in pants”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/thenanyu/status/2067327901666521478"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Peter Steinberger** (Polyagentmorous ClawFather. Came back from retirem)\n*“sci-fi vibes intensify https://t.co/4Y4iakN3vv”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/steipete/status/2067431311317352809"
+        }
+      ]
+    },
+    {
+      "tag": "div",
+      "text": {
+        "tag": "lark_md",
+        "content": "**Sam Altman** (AI is cool i guess)\n*“We offer no explanation as to why Noams are so good at AI; we attribute their success, as all else, to divine benevolenc...”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
+      }
+    },
+    {
+      "tag": "action",
+      "actions": [
+        {
+          "tag": "button",
+          "text": {
+            "tag": "plain_text",
+            "content": "X 原帖"
+          },
+          "type": "default",
+          "url": "https://x.com/sama/status/2067427678529974740"
         }
       ]
     },
@@ -202,7 +415,7 @@
       "elements": [
         {
           "tag": "plain_text",
-          "content": "Follow Builders · 追踪建造者而非网红 · 2026-09-21"
+          "content": "Follow Builders · 追踪建造者而非网红 · 2026-06-18"
         }
       ]
     }

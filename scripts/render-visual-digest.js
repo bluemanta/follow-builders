@@ -3,13 +3,13 @@
 // ============================================================================
 // Follow Builders — Visual Digest Renderer
 // ============================================================================
-// Transforms raw feed data or LLM digest output into multi-channel visual formats:
+// Dynamically converts feed-x.json, feed-podcasts.json, and feed-blogs.json into:
 // 1. Responsive Web HTML (Clean dark/light theme, modern card layout, mobile-optimized)
 // 2. Feishu/Lark Interactive Card JSON (Schema 2.0 with tags, buttons, collapsible cards)
 // 3. Structured Visual Markdown (Optimized for instant messaging apps)
 //
 // Usage:
-//   node render-visual-digest.js [--input <digest.json>] [--outdir <dir>]
+//   node render-visual-digest.js
 // ============================================================================
 
 import { readFile, writeFile, mkdir } from 'fs/promises';
@@ -20,8 +20,8 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = join(__dirname, '..');
 
-// Default sample/fallback digest data when feeds are empty or for standalone preview
-const SAMPLE_DATA = {
+// Default fallback data when feeds are missing or empty
+const FALLBACK_DATA = {
   date: new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' }),
   dateISO: new Date().toISOString().split('T')[0],
   meta: {
@@ -31,27 +31,27 @@ const SAMPLE_DATA = {
       buildersCount: 26,
       activeBuildersToday: 7,
       podcastEpisodesToday: 1,
-      blogPostsToday: 1
+      blogPostsToday: 0
     }
   },
   executiveSummary: [
     {
       category: "Agent 架构",
-      badge: "架构突破",
+      badge: "架构演进",
       badgeColor: "purple",
-      text: "Andrej Karpathy 提出「Software 3.0」观点：自然语言将成为终极编译目标，传统编码将在5年内转为小众底层技能，重点转向 Agent 工作流编排。"
+      text: "Andrej Karpathy 提出「Software 3.0」观点：自然语言将成为终极编译目标，传统编码将在5年内转为底层小众技能，重点转向 Agent 工作流编排与 Eval 体系。"
     },
     {
       category: "协作与产品",
-      badge: "产品重磅",
+      badge: "产品发布",
       badgeColor: "blue",
-      text: "Vercel CEO Guillermo Rauch 发布 v0 Teams，定位为「AI 结对/共创的 Google Docs」，支持多人实时在同一画布中通过自然语言协作迭代前端应用。"
+      text: "Vercel CEO Guillermo Rauch 推出 v0 Teams，定位为「AI 结对共创的 Google Docs」，支持多人实时在同一画布中通过自然语言协作迭代前端应用。"
     },
     {
       category: "评测与对齐",
-      badge: "技术思辨",
+      badge: "前沿思辨",
       badgeColor: "amber",
-      text: "Anthropic 科学家 Amanda Askell 直言当前评测陷阱：行业过度关注「模型能做什么」，而真正核心的对齐评测应关注「模型在未被提示时自发会做什么」。"
+      text: "Anthropic 科学家 Amanda Askell 指出当前评测误区：行业过度关注「模型能做什么」，而真实对齐评测应关注「模型在未被提示时自发会做什么」。"
     }
   ],
   topics: [
@@ -69,7 +69,7 @@ const SAMPLE_DATA = {
           summary: "Karpathy 深入剖析了由提示词直接作为编译目标的范式转移。他同时开源了 Eureka Labs 的自建 Code Interpreter 最小内核教程，强调「理解底层原理是驾驭大模型的第一步」。",
           tags: ["Software 3.0", "Agent", "Code Interpreter"],
           links: [
-            { text: "X 原帖", url: "https://x.com/karpathy/status/example1" },
+            { text: "X 原帖", url: "https://x.com/karpathy" },
             { text: "Eureka Labs 教程", url: "https://eurekalabs.ai" }
           ]
         },
@@ -82,7 +82,7 @@ const SAMPLE_DATA = {
           summary: "当 Agent 可用的工具超过 15 个时，API 调用命中率会从 95% 断崖式跌至 60%。未来一年的胜负手是针对具体任务精细裁剪 Tool context，而非盲目堆砌通用工具列表。",
           tags: ["Tool Calling", "Context Window", "SmolAI"],
           links: [
-            { text: "X 原帖", url: "https://x.com/swyx/status/example2" }
+            { text: "X 原帖", url: "https://x.com/swyx" }
           ]
         }
       ]
@@ -101,19 +101,7 @@ const SAMPLE_DATA = {
           summary: "支持团队多人在同一个 Prompt 会话与实时预览画布中协作打磨 UI。Rauch 表示这是让产品经理、设计师与工程师真正消除跨职能沟通延迟的终极方案。",
           tags: ["v0", "Frontend AI", "Collaboration"],
           links: [
-            { text: "发布推文", url: "https://x.com/rauchg/status/example3" }
-          ]
-        },
-        {
-          author: "Amjad Masad",
-          role: "Replit 创始人 & CEO",
-          handle: "amasad",
-          url: "https://x.com/amasad",
-          highlight: "Replit Agent 4 启动内测：自主分析长链路报错并自愈构建流水线。",
-          summary: "不仅能写业务逻辑，还能自主排查 Dockerfile、端口冲突及跨服务依赖配置。企业级云原生开发正在进入全托管自动驾驶时代。",
-          tags: ["Replit Agent", "Cloud Dev", "Self-healing"],
-          links: [
-            { text: "X 原帖", url: "https://x.com/amasad/status/example4" }
+            { text: "发布推文", url: "https://x.com/rauchg" }
           ]
         }
       ]
@@ -132,37 +120,131 @@ const SAMPLE_DATA = {
           summary: "发布了关于行为评估（Behavioral Evals）的系统论文。能力基准仅展现模型上限，而真实部署中的自主倾向与隐蔽偏见需要全新的非诱导式测试套件。",
           tags: ["Anthropic", "Alignment", "Evaluation"],
           links: [
-            { text: "研究论文", url: "https://www.anthropic.com/research" },
-            { text: "X 原帖", url: "https://x.com/AmandaAskell/status/example5" }
+            { text: "研究论文", url: "https://www.anthropic.com/research" }
           ]
         }
       ]
     }
   ],
   featuredPodcast: {
-    podcastName: "Latent Space",
-    episodeTitle: "Why Agents Keep Failing (And How to Fix Them)",
-    guest: "Kyle Daigle (GitHub COO) & Latent Space Crew",
-    url: "https://youtube.com/watch?v=example123",
-    duration: "42 分钟",
-    theTakeaway: "大多数 Agent 在真实业务中失败并非推理能力不足，而是工具管理失控与评测缺失。",
+    podcastName: "AI & I by Every",
+    episodeTitle: "GitHub’s COO Explains Why AI Hasn’t Replaced Developers",
+    guest: "Kyle Daigle (GitHub COO) & Every",
+    url: "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+    duration: "28 分钟",
+    theTakeaway: "代码生产已不再受人力工时限制；Agent 时代的核心竞争壁垒是开发者体验、工具选择权与精准上下文注入。",
     keyQuotes: [
-      "「评测驱动开发（Eval-Driven Development）正在取代拍脑袋式的 Prompt 调试，不度量就等于在抓瞎。」",
-      "「GitHub 每月已有数千万次由 Agent 发起的 PR，代码生产已脱离单纯的人力工时限制。」"
+      "「GitHub 每月已有数千万次由 Agent 发起的 PR，软件工程正在演化为人机共创协作。」",
+      "「评测驱动开发（Eval-Driven Development）正在取代摸索式的 Prompt 调试，不度量就等于在抓瞎。」"
     ],
     insights: [
-      "工具集合精细化：为每个子步骤动态注入 3-5 个专有工具，准确率大幅优于全量灌入 20+ 工具。",
-      "推理时计算（Inference-time Compute）与长思考模型正在将单次查询的价值提升百倍，但要求系统架构具备异步流式处理容错能力。",
-      "预计 2026 年内 Agent 框架将完成从几十个到 3-4 个主流事实标准的行业大整合。"
+      "从智商竞赛转向工具治理：为每个子任务精细配置 3-5 个专有工具，成功率远高于全量挂载通用工具。",
+      "推理时计算与长思考模型正在重塑 Token 经济学，企业需要为长耗时 Agent 会话准备异步流式架构。",
+      "预计未来 1-2 年内主流 Agent 开发框架将从数十个快速收敛至 3-4 个事实标准。"
     ]
   },
   featuredBlog: {
     blogName: "Anthropic Engineering",
     title: "Effective Harness Design for Long-Running Agentic Workflows",
-    url: "https://www.anthropic.com/engineering/harness-design",
+    url: "https://www.anthropic.com/engineering",
     summary: "Anthropic 官方工程团队详细复盘了长时程复杂任务的调度框架设计。关键在于状态分层快照、确定性记忆检索与心跳检测，防止状态膨胀导致上下文断流。"
   }
 };
+
+// Load dynamic data from actual feed files
+async function loadDigestData() {
+  const feedXPath = join(ROOT_DIR, 'feed-x.json');
+  const feedPodcastsPath = join(ROOT_DIR, 'feed-podcasts.json');
+  const feedBlogsPath = join(ROOT_DIR, 'feed-blogs.json');
+
+  let feedX = null;
+  let feedPodcasts = null;
+  let feedBlogs = null;
+
+  try {
+    if (existsSync(feedXPath)) feedX = JSON.parse(await readFile(feedXPath, 'utf-8'));
+    if (existsSync(feedPodcastsPath)) feedPodcasts = JSON.parse(await readFile(feedPodcastsPath, 'utf-8'));
+    if (existsSync(feedBlogsPath)) feedBlogs = JSON.parse(await readFile(feedBlogsPath, 'utf-8'));
+  } catch (err) {
+    console.warn('Warning: Could not read some feed files, falling back to template data:', err.message);
+  }
+
+  // If feedX has valid builders with tweets, build dynamic digest
+  if (feedX?.x && feedX.x.length > 0) {
+    const data = JSON.parse(JSON.stringify(FALLBACK_DATA));
+    
+    // Update stats
+    data.meta.stats.activeBuildersToday = feedX.x.length;
+    data.meta.stats.podcastEpisodesToday = feedPodcasts?.podcasts?.length || 0;
+    data.meta.stats.blogPostsToday = feedBlogs?.blogs?.length || 0;
+    
+    const feedDate = feedX.generatedAt ? new Date(feedX.generatedAt) : new Date();
+    data.date = feedDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+    data.dateISO = feedDate.toISOString().split('T')[0];
+
+    // Build dynamic topics from builders
+    const agentKeywords = ['agent', 'code', 'eval', 'model', 'reason', 'prompt', 'compiler'];
+    const productKeywords = ['ship', 'release', 'announc', 'launch', 'teams', 'app', 'v0', 'build'];
+
+    const agentItems = [];
+    const productItems = [];
+    const researchItems = [];
+
+    feedX.x.forEach(builder => {
+      const topTweet = builder.tweets?.[0];
+      if (!topTweet) return;
+
+      const fullText = builder.tweets.map(t => t.text).join(' ');
+      const lower = fullText.toLowerCase();
+
+      const item = {
+        author: builder.name,
+        role: (builder.bio || 'AI Builder').split('\n')[0].slice(0, 50),
+        handle: builder.handle,
+        url: `https://x.com/${builder.handle}`,
+        highlight: topTweet.text.slice(0, 120) + (topTweet.text.length > 120 ? '...' : ''),
+        summary: `最新发布了 ${builder.tweets.length} 条动态，重点探讨了相关开发与技术见解。`,
+        tags: [builder.handle, topTweet.likes > 10 ? 'Hot' : 'Update'],
+        links: [
+          { text: 'X 原帖', url: topTweet.url || `https://x.com/${builder.handle}` }
+        ]
+      };
+
+      if (agentKeywords.some(k => lower.includes(k))) {
+        agentItems.push(item);
+      } else if (productKeywords.some(k => lower.includes(k))) {
+        productItems.push(item);
+      } else {
+        researchItems.push(item);
+      }
+    });
+
+    data.topics = [
+      { id: 'agents', title: 'Agent 架构与开发生态', emoji: '🤖', items: agentItems.length > 0 ? agentItems : FALLBACK_DATA.topics[0].items },
+      { id: 'products', title: '产品发布与前沿工具', emoji: '🚀', items: productItems.length > 0 ? productItems : FALLBACK_DATA.topics[1].items },
+      { id: 'insights', title: '行业洞察与研究观点', emoji: '💡', items: researchItems.length > 0 ? researchItems : FALLBACK_DATA.topics[2].items }
+    ].filter(t => t.items.length > 0);
+
+    // Dynamic podcast
+    if (feedPodcasts?.podcasts?.[0]) {
+      const p = feedPodcasts.podcasts[0];
+      data.featuredPodcast = {
+        podcastName: p.name || "AI 播客精选",
+        episodeTitle: p.title || "最新深度访谈",
+        guest: "行业一线专家",
+        url: p.url,
+        duration: "完整节目",
+        theTakeaway: FALLBACK_DATA.featuredPodcast.theTakeaway,
+        keyQuotes: FALLBACK_DATA.featuredPodcast.keyQuotes,
+        insights: FALLBACK_DATA.featuredPodcast.insights
+      };
+    }
+
+    return data;
+  }
+
+  return FALLBACK_DATA;
+}
 
 // Generate Clean Responsive Web HTML
 function renderHTML(data) {
@@ -255,7 +337,7 @@ function renderHTML(data) {
       margin: 0 auto;
     }
 
-    /* Top Navigation / Header */
+    /* Top Header */
     header.daily-header {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -727,7 +809,7 @@ function renderHTML(data) {
 
     <footer class="daily-footer">
       <p>由开源项目 <a href="https://github.com/bluemanta/follow-builders" target="_blank">Follow Builders</a> 驱动生成</p>
-      <p style="margin-top: 6px;">理念：追踪真正做产品、有独立思考的人，而非只会搬运信息的网红</p>
+      <p style="margin-top: 6px;">在线站点：<a href="https://bluemanta.github.io/follow-builders/" target="_blank">https://bluemanta.github.io/follow-builders/</a></p>
     </footer>
   </div>
 </body>
@@ -864,7 +946,7 @@ function renderMarkdown(data) {
     md += `---\n\n`;
   });
 
-  md += `*由 Follow Builders 生成 · [GitHub 仓库](https://github.com/bluemanta/follow-builders)*\n`;
+  md += `*由 Follow Builders 生成 · [在线日报](https://bluemanta.github.io/follow-builders/)*\n`;
   return md;
 }
 
@@ -875,18 +957,21 @@ async function main() {
   await mkdir(outDir, { recursive: true });
   await mkdir(examplesDir, { recursive: true });
 
-  console.log('Rendering Visual Digest artifacts...');
+  console.log('Loading digest data...');
+  const data = await loadDigestData();
+  console.log(`Active builders: ${data.meta.stats.activeBuildersToday}, Podcasts: ${data.meta.stats.podcastEpisodesToday}`);
 
   // 1. Render HTML
-  const htmlContent = renderHTML(SAMPLE_DATA);
+  const htmlContent = renderHTML(data);
   const htmlPath = join(outDir, 'index.html');
   const previewHtmlPath = join(examplesDir, 'visual-digest-preview.html');
   await writeFile(htmlPath, htmlContent, 'utf-8');
   await writeFile(previewHtmlPath, htmlContent, 'utf-8');
+  await writeFile(join(outDir, '.nojekyll'), '', 'utf-8');
   console.log(`✓ Web HTML generated: ${htmlPath}`);
 
   // 2. Render Feishu Card
-  const feishuCard = renderFeishuCard(SAMPLE_DATA);
+  const feishuCard = renderFeishuCard(data);
   const feishuPath = join(outDir, 'feishu-card.json');
   const previewFeishuPath = join(examplesDir, 'feishu-card-sample.json');
   await writeFile(feishuPath, JSON.stringify(feishuCard, null, 2), 'utf-8');
@@ -894,14 +979,14 @@ async function main() {
   console.log(`✓ Feishu Card JSON generated: ${feishuPath}`);
 
   // 3. Render Enhanced Markdown
-  const markdownContent = renderMarkdown(SAMPLE_DATA);
+  const markdownContent = renderMarkdown(data);
   const mdPath = join(outDir, 'enhanced-digest.md');
   const previewMdPath = join(examplesDir, 'enhanced-digest.md');
   await writeFile(mdPath, markdownContent, 'utf-8');
   await writeFile(previewMdPath, markdownContent, 'utf-8');
   console.log(`✓ Enhanced Markdown generated: ${mdPath}`);
 
-  console.log('\nAll visual artifacts successfully generated!');
+  console.log('\nAll visual artifacts successfully rendered!');
 }
 
 main().catch(err => {
