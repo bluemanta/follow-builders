@@ -3,10 +3,10 @@
     "wide_screen_mode": true
   },
   "header": {
-    "template": "blue",
+    "template": "grey",
     "title": {
       "tag": "plain_text",
-      "content": "⚡ AI Builders Daily 追踪建造者日报 (2026-06-18)"
+      "content": "⚡ AI Builders Daily · 追踪建造者日报 (2026-09-21)"
     }
   },
   "elements": [
@@ -14,7 +14,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**💡 今日 1 分钟要闻速览**\n• **[架构演进]** Andrej Karpathy 提出「Software 3.0」观点：自然语言将成为终极编译目标，传统编码将在5年内转为底层小众技能，重点转向 Agent 工作流编排与 Eval 体系。\n• **[产品发布]** Vercel CEO Guillermo Rauch 推出 v0 Teams，定位为「AI 结对共创的 Google Docs」，支持多人实时在同一画布中通过自然语言协作迭代前端应用。\n• **[前沿思辨]** Anthropic 科学家 Amanda Askell 指出当前评测误区：行业过度关注「模型能做什么」，而真实对齐评测应关注「模型在未被提示时自发会做什么」。"
+        "content": "**💡 今日 1 分钟核心要闻速览**\n• **[测试与交付]** Guillermo Rauch 盛赞 Coding Agent 的全流程测试与 QA 能力：遇到移动端渲染异常时，Agent 能自主重现、部署临时 Vercel 环境并在 iPhone 模拟器中验证，展现出人类难以企及的穷尽式强度与交付确定性。\n• **[竞争格局]** Peter Yang 深度复盘 Personal Agent 竞局：Meta Muse 凭借独立 App 体验领先，ChatGPT 仍居用户量首位但面临企业与个人 UX 割裂；多人协同（Multiplayer AI）将是下一代 Agent 的核心演进方向。\n• **[原生结算]** Coinbase CEO Brian Armstrong 在 No Priors 播客中指出：未来数以亿计的自主 Agent 将重塑金融基础设施，加密钱包与稳定币（Stablecoin）将成为智能体购买算力与服务的事实货币标准。"
       }
     },
     {
@@ -24,7 +24,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**🎧 精选播客拆解｜AI & I by Every**\n**GitHub’s COO Explains Why AI Hasn’t Replaced Developers**\n*“代码生产已不再受人力工时限制；Agent 时代的核心竞争壁垒是开发者体验、工具选择权与精准上下文注入。”*\n> 从智商竞赛转向工具治理：为每个子任务精细配置 3-5 个专有工具，成功率远高于全量挂载通用工具。\n> 推理时计算与长思考模型正在重塑 Token 经济学，企业需要为长耗时 Agent 会话准备异步流式架构。"
+        "content": "**🎧 深度播客精读｜No Priors**\n**Coinbase’s Everything Exchange: Agentic Finance, Stablecoins, and Tokenization with CEO Brian Armstrong**\n*“AI Agent 经济正在重塑金融底层基础设施。智能体无法在传统金融机构开户，基于区块链的原生钱包与稳定币结算将成为 Agent 间协作交易的事实标准。”*\n> Agent 原生金融栈：AI 智能体无法通过传统银行 KYC，加密钱包与稳定币（Stablecoin）是机器经济天然的无国界支付介质。\n> 可编程合规与安全：随着智能体发起的金融调用量级爆发，链上智能合约提供了比人工审批更具确定性与细粒度的防护护栏。"
       }
     },
     {
@@ -36,8 +36,8 @@
             "tag": "plain_text",
             "content": "收听原播客"
           },
-          "type": "primary",
-          "url": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL"
+          "type": "default",
+          "url": "https://www.youtube.com/@NoPriorsPodcast"
         }
       ]
     },
@@ -55,7 +55,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Thibault Sottiaux** (Codex & ChatGPT @OpenAI)\n*“Dearest gentle codexer.\n\nWe did a sneaky double reset. Not only do you get a full reset on us. But you are also getting ...”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Peter Yang** (@petergyang · Practical AI tutorials and interviews for busy people | Get )\n*“If you enjoyed this, sign up for free to my newsletter to get my best AI and product guides.\n\nJoin 110,000+ subscribers here:\nhttps://t.co/yz9xcsfrhF”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -68,7 +68,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/thsottiaux/status/2067399435009622521"
+          "url": "https://x.com/petergyang/status/2101917073081598255"
         }
       ]
     },
@@ -76,7 +76,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Guillermo Rauch** (@vercel CEO)\n*“https://t.co/ZciGmJ8SAP”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Guillermo Rauch** (@rauchg · @vercel CEO)\n*“The thoroughness with which agents can test and QA software is unrivaled. I pointed out something wasn't rendering right in a mobile (in-app) browser. The thing...”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -89,7 +89,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/rauchg/status/2067369305826574587"
+          "url": "https://x.com/rauchg/status/2101846262840799251"
         }
       ]
     },
@@ -97,7 +97,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Aaron Levie** (ceo @box - your business lives in content. unleash)\n*“The past couple months we may be witnessing what the Applied AI layer will look like at scale. Despite some of the initi...”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Aaron Levie** (@levie · ceo @box - your business lives in content. unleash it with A)\n*“Literally impenetrable from agent swarms https://t.co/tg7SZ4d0xu”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -110,7 +110,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/levie/status/2067455756795039957"
+          "url": "https://x.com/levie/status/2101731574668747081"
         }
       ]
     },
@@ -118,7 +118,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Zara Zhang** (Builder. Dangerously skips permissions. Harvard’17)\n*“Don't use AI for writing until you develop your own taste and voice\n\nUsing AI to write isn't inherently bad. The danger ...”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Peter Steinberger** (@steipete · Polyagentmorous ClawFather. Came back from retirement to mes)\n*“Your claw can now FaceTime you! https://t.co/bUFzBG4e7h”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -131,28 +131,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/zarazhangrui/status/2067423674689638652"
-        }
-      ]
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "lark_md",
-        "content": "**Claude** (Claude is an AI assistant built by @anthropicai to)\n*“Claude Design is in beta on all paid plans, on web and desktop. Give it a try: https://t.co/C9iewmyMQs”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
-      }
-    },
-    {
-      "tag": "action",
-      "actions": [
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "X 原帖"
-          },
-          "type": "default",
-          "url": "https://x.com/claudeai/status/2067325894268428560"
+          "url": "https://x.com/steipete/status/2101748928274419843"
         }
       ]
     },
@@ -170,7 +149,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Peter Yang** (Practical AI tutorials and interviews for busy peo)\n*“Watched Mortal Kombat 2 and it was terrible. The Furious has set the bar too high for action movies.”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Swyx** (@swyx · achieve ambition with intentionality, intensity, integrity &)\n*“Jev pod tomorrow\n\nsubscribe on apple /youtube @latentspacepod \n\nthanks to @allenpark and Ke for making this happen! https://t.co/5kDekuLbuS https://t.co/vgkesXE...”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -183,112 +162,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/petergyang/status/2067472851444420715"
-        }
-      ]
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "lark_md",
-        "content": "**Amjad Masad** (ceo @replit. civilizationist)\n*“Was so fun interviewing Spike Jones! https://t.co/EVkl1bH8so”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
-      }
-    },
-    {
-      "tag": "action",
-      "actions": [
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "X 原帖"
-          },
-          "type": "default",
-          "url": "https://x.com/amasad/status/2067386053980266542"
-        }
-      ]
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "lark_md",
-        "content": "**Garry Tan** (President & CEO @ycombinator —Founder @garryslist—)\n*“Rough estimate on $ productivity lost by Fable 5 ban: $12M per hour\n\nFrontier AI-coding daily actives, mid-2026: 5M devs...”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
-      }
-    },
-    {
-      "tag": "action",
-      "actions": [
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "X 原帖"
-          },
-          "type": "default",
-          "url": "https://x.com/garrytan/status/2067366749411176831"
-        }
-      ]
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "lark_md",
-        "content": "**Nikunj Kothari** (partner @fpvventures - investing in seed/A. previo)\n*“Why am I so against tranches? \n\nBecause it f*cks the next employee that joins. I was an early employee at four startups....”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
-      }
-    },
-    {
-      "tag": "action",
-      "actions": [
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "X 原帖"
-          },
-          "type": "default",
-          "url": "https://x.com/nikunj/status/2067399657639285150"
-        }
-      ]
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "lark_md",
-        "content": "**Dan Shipper** (ceo @every | the only subscription you need to sta)\n*“@every @ninklefitz i wrote \"against explanations\" in 2023 about how AI might change the sciences...extremely pumped to s...”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
-      }
-    },
-    {
-      "tag": "action",
-      "actions": [
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "X 原帖"
-          },
-          "type": "default",
-          "url": "https://x.com/danshipper/status/2067386395283345808"
-        }
-      ]
-    },
-    {
-      "tag": "div",
-      "text": {
-        "tag": "lark_md",
-        "content": "**Aditya Agarwal** (General Partner @SouthPkCommons, Co-Founder @Bevel)\n*“Apply to SPC https://t.co/xWaXyqC7Rj”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
-      }
-    },
-    {
-      "tag": "action",
-      "actions": [
-        {
-          "tag": "button",
-          "text": {
-            "tag": "plain_text",
-            "content": "X 原帖"
-          },
-          "type": "default",
-          "url": "https://x.com/adityaag/status/2067306245942317426"
+          "url": "https://x.com/swyx/status/2101873256097804529"
         }
       ]
     },
@@ -306,7 +180,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Swyx** (achieve ambition with intentionality, intensity, i)\n*“@midjourney @Scobleizer @bryan_johnson @DavidSHolz @iScienceLuvr best review from a cancer survivor x tech realist https...”*\n最新发布了 3 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Thariq** (@trq212 · Claude Code @anthropicai. prev YC W20, @spc, @medialab)\n*“there is something about video games that give high stakes and responsibilities to young people who couldn’t really get them irl\n\nbut it is a fine line and at s...”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -319,7 +193,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/swyx/status/2067512137405350067"
+          "url": "https://x.com/trq212/status/2101844435353145452"
         }
       ]
     },
@@ -327,7 +201,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Josh Woodward** (VP, @Google @GoogleLabs @GeminiApp @GoogleAIStudio)\n*“Co-create: one of the key @GoogleLabs values.\n\nIt looks like this, thanks Voltage team! https://t.co/L90dHl9VQh”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Amjad Masad** (@amasad · ceo @replit. civilizationist)\n*“Built my son his first computer https://t.co/9tQWZFSkku”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -340,7 +214,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/joshwoodward/status/2067337173699850487"
+          "url": "https://x.com/amasad/status/2101852258468299182"
         }
       ]
     },
@@ -348,7 +222,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Nan Yu** (head of product @linear)\n*“like, pg talks about taste and wears cargo shorts, he's clearly not talking about taste in pants”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Matt Turck** (@mattturck · VC at @FirstMarkCap.  Host: MAD Podcast; Organizer: Data Dri)\n*“Everyone is obsessed with Jev now, but I'm old enough to remember when people couldn't shut up about Instinct, all the way back to mid last week.  Simpler times...”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -361,7 +235,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/thenanyu/status/2067327901666521478"
+          "url": "https://x.com/mattturck/status/2101820308009206077"
         }
       ]
     },
@@ -369,7 +243,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Peter Steinberger** (Polyagentmorous ClawFather. Came back from retirem)\n*“sci-fi vibes intensify https://t.co/4Y4iakN3vv”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Nikunj Kothari** (@nikunj · partner @fpvventures - investing in seed/A. previous: early )\n*“Jokingly thinking of starting a new cloud kitchen called “next day curry”.. \n\nWhere I order the best curries, store it overnight and serve it the next day. \n\nSa...”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -382,7 +256,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/steipete/status/2067431311317352809"
+          "url": "https://x.com/nikunj/status/2101742225906655315"
         }
       ]
     },
@@ -390,7 +264,7 @@
       "tag": "div",
       "text": {
         "tag": "lark_md",
-        "content": "**Sam Altman** (AI is cool i guess)\n*“We offer no explanation as to why Noams are so good at AI; we attribute their success, as all else, to divine benevolenc...”*\n最新发布了 2 条动态，重点探讨了相关开发与技术见解。"
+        "content": "**Dan Shipper** (@danshipper · ceo @every | the only subscription you need to stay at the e)\n*“highly recommend\n\nthis is my favorite book https://t.co/H4wpR6eQ5O”*\n最新发布了 1 条动态，重点探讨了相关开发与技术见解。"
       }
     },
     {
@@ -403,7 +277,7 @@
             "content": "X 原帖"
           },
           "type": "default",
-          "url": "https://x.com/sama/status/2067427678529974740"
+          "url": "https://x.com/danshipper/status/2101816740741329218"
         }
       ]
     },
@@ -415,7 +289,7 @@
       "elements": [
         {
           "tag": "plain_text",
-          "content": "Follow Builders · 追踪建造者而非网红 · 2026-06-18"
+          "content": "Follow Builders · 追踪做产品的思考者 · 2026-09-21"
         }
       ]
     }

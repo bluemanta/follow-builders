@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -36,6 +36,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Sync latest feeds from upstream
+        run: |
+          echo "Syncing latest feeds from upstream zarazhangrui/follow-builders..."
+          curl -fsSL https://raw.githubusercontent.com/zarazhangrui/follow-builders/main/feed-x.json -o feed-x.json || true
+          curl -fsSL https://raw.githubusercontent.com/zarazhangrui/follow-builders/main/feed-podcasts.json -o feed-podcasts.json || true
+          curl -fsSL https://raw.githubusercontent.com/zarazhangrui/follow-builders/main/feed-blogs.json -o feed-blogs.json || true
+          curl -fsSL https://raw.githubusercontent.com/zarazhangrui/follow-builders/main/state-feed.json -o state-feed.json || true
+
+      - name: Commit updated feeds if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add feed-*.json state-feed.json
+          git diff --cached --quiet || (git commit -m "chore: auto-sync feeds from upstream [skip ci]" && git push) || true
 
       - name: Install dependencies
         run: |
